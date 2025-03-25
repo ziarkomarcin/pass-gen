@@ -53,7 +53,25 @@ def generate_password(min_lenght, numbers=True, special_characters=True):
     return password  # Return the generated password
 
 # Get user input for password preferences
-min_lenght = int(input("Enter the minimum lenght: "))  # Minimum password length
+def get_valid_integer(prompt):
+    """
+    Prompts the user to enter a valid integer and ensures the input is numeric.
+    
+    Parameters:
+        prompt (str): The message to display to the user.
+    
+    Returns:
+        int: A valid integer entered by the user.
+    """
+    while True:
+        user_input = input(prompt)
+        if user_input.isdigit() and int(user_input) > 0:  # Ensure input is a positive integer
+            return int(user_input)
+        print("Invalid input. Please enter a positive integer.")
+
+# VALID INTEGER USAGE
+min_lenght = get_valid_integer("Enter the minimum length: ")  # Minimum password length
+
 def get_yes_no_input(prompt):
     """
     Prompts the user for a 'y' or 'n' input and validates the response.
@@ -70,7 +88,7 @@ def get_yes_no_input(prompt):
             return user_input == "y"
         print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
-# Example usage
+# YES NO INPUT USAGE
 has_number = get_yes_no_input("Do You want to have numbers? (y/n) ")  # Include numbers?
 has_special = get_yes_no_input("Do You want to have special characters? (y/n) ")  # Include special characters?
 # Generate the password based on user input
