@@ -34,8 +34,17 @@ def generate_password(min_lenght, numbers=True, special_characters=True):
 
     return password
 
+# Get user input
 min_lenght = int(input("Enter the minimum lenght: "))
 has_number = input("Do You want to have numbers? (y/n) ").lower() == "y"
 has_special = input("Do You want to have special characters? (y/n) ").lower() == "y"
+
+# Generate password
 password = generate_password(min_lenght, has_number, has_special)
 print("The generated password is: ", password)
+
+# Save the password to a text file
+file_path = "generated_passwords.txt"
+with open(file_path, "a") as file:
+    file.write(password + "\n")
+print(f"The password has been saved to {file_path}")
