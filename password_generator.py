@@ -100,4 +100,4 @@ file_path = "generated_passwords.txt"  # File to store generated passwords
 with open(file_path, "a") as file:
     file.write(password + "\n")  # Append the password to the file
 print(f"The password has been saved to {file_path}")  # Confirm the password was saved
-input() # Wait for user input before closing the program
+input("Press something to close the program...") # Wait for user input before closing the program
