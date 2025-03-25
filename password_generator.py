@@ -54,9 +54,25 @@ def generate_password(min_lenght, numbers=True, special_characters=True):
 
 # Get user input for password preferences
 min_lenght = int(input("Enter the minimum lenght: "))  # Minimum password length
-has_number = input("Do You want to have numbers? (y/n) ").lower() == "y"  # Include numbers?
-has_special = input("Do You want to have special characters? (y/n) ").lower() == "y"  # Include special characters?
+def get_yes_no_input(prompt):
+    """
+    Prompts the user for a 'y' or 'n' input and validates the response.
+    
+    Parameters:
+        prompt (str): The message to display to the user.
+    
+    Returns:
+        bool: True if the user inputs 'y', False if 'n'.
+    """
+    while True:
+        user_input = input(prompt).lower()
+        if user_input in ["y", "n"]:
+            return user_input == "y"
+        print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
+# Example usage
+has_number = get_yes_no_input("Do You want to have numbers? (y/n) ")  # Include numbers?
+has_special = get_yes_no_input("Do You want to have special characters? (y/n) ")  # Include special characters?
 # Generate the password based on user input
 password = generate_password(min_lenght, has_number, has_special)
 print("The generated password is: ", password)  # Display the generated password
